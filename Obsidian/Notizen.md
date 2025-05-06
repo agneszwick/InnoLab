@@ -1,14 +1,27 @@
 # Daten
+## DWD 
+https://opendata.dwd.de/climate_environment/CDC/grids_germany/
+- __*Monatliche und Saisonal (2022-2024)
+	- Niederschlag 
+	- Min/Mean/Max Temperatur (Parameter Jahreszeitenmittel der monatlich gemittelten täglichen Lufttemperaturmaxima in 2 m Höhe, in 1/10 °C.)
+	- UHI
+		- tropical_nights_diff (Anzahl der Tropennächte, die zusätzlich aufgrund von Bebauungsstrukturen aufkommt)
+		- uhi_daymax_max (maximale UHI-Intensität)
+		- uhi_daymax_mean (mittlere UHI-Intensität basierend auf Tagesmaxima)
+	- Dürreindex (Trockenheitsindex nach de Martonne (dMI) wird durch folgende Formel berechnet: dMI = P/(T+10). Eingangsdaten sind die Raster für T=Temperatur in Grad Celsius und P=Niederschlag in mm)
+- Anmerkung: Nummerierung bei Saisonal: 
+	- MAM(yyyy_13)
+	- JJA(yyyy_14)
+	- SON(yyyy_15)
+	- DJF(yyyy_16)
 ## MODIS 
+- NDVI 
+## World Settlement Footprint (DLR) 
+- in GEE nur von 2015
 
-- Temperaturdaten (DWD oder MODIS)
-- DWD: https://cdc.dwd.de/portal/202209231028/mapview
-- Eurostat (Grad der Verstädterung) ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/degree-urbanisation 
-- World Settlement Footprint (DLR) in GEE nur von 2015
-- NDVI (Landsat oder MODIS)
+## Sentinel-5P
 - NO2/SO2/O3 (Sentinel-5P)
 - Grünflächen (Corine Land Cover)
-- Bevölkerungsdaten (Einkommen, Alter, Haushaltgröße...) (Genesis-destatista)
 - 
 
 ## Destatis
@@ -185,8 +198,8 @@ Alle folgenden Werte sind von 2022:
 
 
 
-### Verwaltungsgebiete:
+## Verwaltungsgebiete:
 - Daten: https://gdz.bkg.bund.de/index.php/default/verwaltungsgebiete-1-250-000-stand-31-12-vg250-31-12.html
 - Landkreisebene: Kreis VG250_KRS.SHP
-- 
+
 
