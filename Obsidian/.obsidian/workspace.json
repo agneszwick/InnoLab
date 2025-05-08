@@ -22,22 +22,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "bb4011d83589b040",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "1ea7526b3a802861",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -186,6 +170,8 @@
   },
   "active": "ac88ec617e5f2364",
   "lastOpenFiles": [
-    "Notizen.md"
+    "Untitled.md",
+    "Notizen.md",
+    "Fragen.md"
   ]
 }

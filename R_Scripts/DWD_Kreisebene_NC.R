@@ -94,8 +94,8 @@ library(purrr)
 
 # --- Konfiguration -------------------------------------------------------
 shp_path <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/Verwaltungsgebiete/vg250_12-31.gk3.shape.ebenen/vg250_ebenen_1231/VG250_KRS.shp"
-input_dir <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/UHI/Tropische_Naechte/Saisonal"
-output_csv <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/Kreisebene/UHI/Tropische_Naechte/Saisonal/Stats_Tropical_Nights_Saisonal.csv"
+input_dir <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/UHI/Tropische_Naechte/Jaehrlich"
+output_csv <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/Kreisebene/UHI/Tropische_Naechte/Jaehrlich/Stats_Tropical_Nights_Jaehrlich.csv"
 
 # --- Kreise laden und vorbereiten ----------------------------------------
 kreise <- st_read(shp_path) %>%
@@ -143,3 +143,29 @@ final_df <- left_join(base_df, final_df, by="ID")
 # --- Als CSV speichern ----------------------------------------------------
 write.csv(final_df, output_csv, row.names=FALSE)
 message("Fertig – CSV gespeichert unter: ", output_csv)
+
+
+
+# --- Landkreise in Karte darstellen ----------------------------------------------------
+
+library(sf)
+library(tmap)
+
+# Kreise laden
+kreise <- st_read(shp_path) %>%
+  st_transform(31467)
+
+library(sf)
+library(ggplot2)
+
+# Kreise laden
+kreise <- st_read(shp_path) %>%
+  st_transform(31467)  # UTM Zone 32N
+
+# Nur die Umrisse plotten
+ggplot(kreise) +
+  geom_sf(fill = NA, color = "black", size = 0.3) +
+  theme_minimal() +
+  labs(title = "Umrisse der Landkreise in Deutschland")
+
+

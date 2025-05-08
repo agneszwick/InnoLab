@@ -2,7 +2,7 @@
 ## DWD 
 https://opendata.dwd.de/climate_environment/CDC/grids_germany/
 - __*Monatliche und Saisonal (2022-2024)
-	- Niederschlag 
+	- Niederschlag (Jahreszeitensumme der Niederschlagshöhe in mm.)
 	- Min/Mean/Max Temperatur (Parameter Jahreszeitenmittel der monatlich gemittelten täglichen Lufttemperaturmaxima in 2 m Höhe, in 1/10 °C.)
 	- UHI
 		- tropical_nights_diff (Anzahl der Tropennächte, die zusätzlich aufgrund von Bebauungsstrukturen aufkommt)
@@ -21,9 +21,16 @@ https://opendata.dwd.de/climate_environment/CDC/grids_germany/
 
 ## Sentinel-5P
 - NO2/SO2/O3 (Sentinel-5P)
-- Grünflächen (Corine Land Cover)
+- Auflösung 1113.2 m
+- Werte liegen in **mol/m²** (Mol pro Quadratmeter) → Umrechnung→ **µmol/m² = mol/m² × 1,000,000** 
+- Anmerkung bei den combined_files (zb combined_O3_values) wurden die werte auf  **µmol/m²** umgerechnet!!!
 - 
 
+- Sentinel-5P OFFL NO2: Offline Nitrogen Dioxide
+	- Because of noise in the data, negative vertical column values are often observed in particular over clean regions or for low SO2 emissions. It is recommended not to filter these values except for outliers, i.e. for vertical columns lower than -0.001 mol/m^2.
+
+## Corine Land Cover
+- Grünflächen
 ## Destatis
 - Bevölkerung: Kreise, Stichtag, Geschlecht, Altersgruppen (Code: 12411-0018) https://www-genesis.destatis.de/datenbank/online/statistic/12411/table/12411-0018
 	- Abgespeichert unter: Bevölkerung
@@ -201,5 +208,17 @@ Alle folgenden Werte sind von 2022:
 ## Verwaltungsgebiete:
 - Daten: https://gdz.bkg.bund.de/index.php/default/verwaltungsgebiete-1-250-000-stand-31-12-vg250-31-12.html
 - Landkreisebene: Kreis VG250_KRS.SHP
+- GF: Geofaktor
+	- Werteübersicht:
+		- 1 = ohne Struktur Gewässer
+		- 2 = mit Struktur Gewässer
+		- 3 = ohne Struktur Land
+		- 4 = mit Struktur Land
+	
+	- Die Gebiete, in denen unterhalb der Landesebene keine weiteren Ebenen vorhanden sind, erhalten die Angabe „ohne Struktur“. Die Angabe Gewässer bezieht sich auf die Nord- und Ostsee sowie den Bodensee. Verwaltungseinheiten, deren Gebiet sich auch über die Nord- oder Ostsee bzw. den Bodensee erstreckt, sind an der Küste getrennt. Eine Unterscheidung der beiden Teile der betroffenen Verwaltungseinheiten ist über das Attribut GF (Geofaktor) möglich. Die Teilfläche auf den genannten Gewässern besitzt den GF-Wert 2. Dagegen besitz die Landteilflächen den GF-Wert 4.
+	- 
 
 
+
+SUPABASE
+Passwort: ZU)CAnRL4u+Aq-a

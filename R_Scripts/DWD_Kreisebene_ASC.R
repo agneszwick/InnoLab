@@ -13,11 +13,11 @@ shp_path <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/Verwaltungsgebi
 
 # Ordner mit den .asc-Dateien
 asc_dir <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/
-            Niederschlag/Saisonal" %>%
+            Niederschlag/Jaehrlich" %>%
   gsub("\\s+","",.)
 
 # Ausgabe-CSV
-out_csv <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/Kreisebene/Niederschlag/Saisonal/Stats_Prec_Saisonal.csv" %>%
+out_csv <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/Kreisebene/Niederschlag/Jaehrlich/Stats_Prec_Jaehrlich.csv" %>%
   gsub("\\s+","",.)
 
 # 1. Kreise laden & projizieren ------------------------------------------
@@ -60,7 +60,8 @@ for(file in asc_files){
   crs(r) <- CRS("+proj=tmerc +lat_0=0 +lon_0=9 +k=1 +x_0=3500000 +y_0=0
                  +ellps=bessel +towgs84=598.1,73.7,418.2,0.202,0.045,-2.455,6.7
                  +units=m +no_defs")
-  r <- r / 10
+  
+  # r <- r / 10 # nur bei Temoeraturdaten
 
   # d) Crop + Mask
   r2 <- mask(crop(r, extent(kreise)), kreise)
@@ -84,5 +85,55 @@ for(file in asc_files){
 # 4. Als CSV speichern
 write.csv(final_df, out_csv, row.names=FALSE)
 message("fertig – CSV: ", out_csv)
+
+
+# 5. Karte plotten --------------------------------------------------------
+
+# Pakete laden
+library(raster)
+library(sf)
+library(dplyr)
+library(viridis)
+
+# 0. Konfiguration --------------------------------------------------------
+
+# Pfad zur .asc-Datei (Jährliche Niederschlagsdaten)
+prec_file <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/Niederschlag/Jaehrlich/annual_precipitation_grids_germany_annual_precipitation_202217.asc"
+temp_file <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten/Temperatur/Jaehrlich/annual_air_temperature_max_grids_germany_annual_air_temp_max_202217.asc"
+
+# 2. Raster laden und projizieren --------------------------------------------
+
+# Rasterdatei laden
+r <- raster(temp_file)
+
+# Setze das Koordinatensystem (CRS) für das Raster
+crs(r) <- CRS("+proj=tmerc +lat_0=0 +lon_0=9 +k=1 +x_0=3500000 +y_0=0
+                 +ellps=bessel +towgs84=598.1,73.7,418.2,0.202,0.045,-2.455,6.7
+                 +units=m +no_defs")
+
+r <- r / 10 # nur bei Temoeraturdaten
+
+
+# 3. Zuschneiden und Maskieren des Rasters ------------------------------------
+
+# Beispiel: Wähle einen bestimmten Landkreis, z.B. ID 1 (ändern nach Bedarf)
+# selected_landkreis <- kreise[kreise$GEN == 'Würzburg', ]
+selected_landkreis <- kreise[kreise$ID == 1, ]
+
+plot(selected_landkreis)
+
+r2 <- mask(crop(r, extent(selected_landkreis)), selected_landkreis)
+
+
+
+# 4. Visualisierung des Rasters mit Landkreisbgrenzung -----------------------
+
+# Plot des zugeschnittenen Rasters
+plot(r2, main = "Jährliche Durchschnittstemperatur - Landkreis ID=1",
+     col = turbo(100), 
+     zlim = c(min(r2[], na.rm = TRUE), max(r2[], na.rm = TRUE)))
+
+# Umriss des Landkreises hinzufügen
+plot(st_geometry(selected_landkreis), add = TRUE, border = "red", lwd = 2)
 
 
