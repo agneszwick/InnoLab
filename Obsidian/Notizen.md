@@ -1,4 +1,19 @@
 # Daten
+
+## Noise2NAKOAI - Roud Traffic Noise, Germany 2017
+https://geoservice.dlr.de/web/datasets/n2nnoise
+- Input Data: EIONET Strategic Noise Maps (DF 4 and DF 8) Aggroad_Lden and Mroad_Lden. Data reported under the 2002/49/EC obligations to EEA.
+- Format: Cloud-Optimized GeoTIFF (COG)
+- Spatial Resolution: 10 x 10m
+- Period: 2017
+- Coverage: Germany
+- License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- The indicator, Lden (Day-Evening-Night Level), describes the equivalent sound pressure level of a 24-hour period, with separate values for daytime, evening, and nighttime periods and is commonly used in environmental noise assessments to evaluate the impact of noise sources on human health and well-being. 
+- The input data, simulated noise levels provided as shapefiles by the federal states of Germany, were cleansed and harmonized prior rasterizing them to 10 x 10m.
+- - Spatial Resolution: 10 x 10m
+- **Map Projection:** Name: [ETRS89 / LAEA Europe (EPSG:3035)](https://epsg.io/3035)
+![[Pasted image 20250509135119.png]]
+ 
 ## DWD 
 https://opendata.dwd.de/climate_environment/CDC/grids_germany/
 - __*Monatliche und Saisonal (2022-2024)
@@ -9,11 +24,15 @@ https://opendata.dwd.de/climate_environment/CDC/grids_germany/
 		- uhi_daymax_max (maximale UHI-Intensität)
 		- uhi_daymax_mean (mittlere UHI-Intensität basierend auf Tagesmaxima)
 	- Dürreindex (Trockenheitsindex nach de Martonne (dMI) wird durch folgende Formel berechnet: dMI = P/(T+10). Eingangsdaten sind die Raster für T=Temperatur in Grad Celsius und P=Niederschlag in mm)
+	- Hot_days (Hitzetage): Anzahl der Heißen Tage; Definition Heißer Tag: Maximum der Lufttemperatur >= 30°C
+	- Sunshine_duration(Sonnenscheindauer): Jahressumme der Sonnenscheindauer in h
 - Anmerkung: Nummerierung bei Saisonal: 
 	- MAM(yyyy_13)
 	- JJA(yyyy_14)
 	- SON(yyyy_15)
 	- DJF(yyyy_16)
+### Sortierung DWD-Daten
+
 ## MODIS 
 - NDVI 
 ## World Settlement Footprint (DLR) 
@@ -30,7 +49,12 @@ https://opendata.dwd.de/climate_environment/CDC/grids_germany/
 	- Because of noise in the data, negative vertical column values are often observed in particular over clean regions or for low SO2 emissions. It is recommended not to filter these values except for outliers, i.e. for vertical columns lower than -0.001 mol/m^2.
 
 ## Corine Land Cover
-- Grünflächen
+- Auflösung 100m 
+- Datengrundlage 2018: Sentinel-2 and Landsat-8 for gap filling
+- 44 Klassen davon 37 in deutschland vertreten 
+- Raster wurde auf KRS zugeschnitten, vektorisiert, und dann flächenanteil in % pro KRS berechnet 
+
+
 ## Destatis
 - Bevölkerung: Kreise, Stichtag, Geschlecht, Altersgruppen (Code: 12411-0018) https://www-genesis.destatis.de/datenbank/online/statistic/12411/table/12411-0018
 	- Abgespeichert unter: Bevölkerung
@@ -39,7 +63,7 @@ https://opendata.dwd.de/climate_environment/CDC/grids_germany/
 	- 
 ## INKAR 
 https://www.inkar.de/
-Alle folgenden Werte sind von 2022:
+Alle folgenden Werte sind von 2022 (aber ab 1995 verfügbar):
 - #### Absolutzahlen
 	- __Bodenfläche gesamt qkm__ (Katasterfläche in km²)
 	- __Bevölkerung gesamt__ (Zahl der Einwohner insgesamt)
@@ -199,9 +223,6 @@ Alle folgenden Werte sind von 2022:
 	- __Abfallmenge__ (Entsorgte Abfallmenge in kg je Einwohner)
 	- __Steuereinnahmen__ (Steuereinnahmen der Gemeinden und Gemeindeverbände in Euro je Einwohner)
 	- __Kassenkredite__ (Kassenkredite im Kernhaushalt je Einwohner)
-	- 
-
-
 
 
 
@@ -218,7 +239,3 @@ Alle folgenden Werte sind von 2022:
 	- Die Gebiete, in denen unterhalb der Landesebene keine weiteren Ebenen vorhanden sind, erhalten die Angabe „ohne Struktur“. Die Angabe Gewässer bezieht sich auf die Nord- und Ostsee sowie den Bodensee. Verwaltungseinheiten, deren Gebiet sich auch über die Nord- oder Ostsee bzw. den Bodensee erstreckt, sind an der Küste getrennt. Eine Unterscheidung der beiden Teile der betroffenen Verwaltungseinheiten ist über das Attribut GF (Geofaktor) möglich. Die Teilfläche auf den genannten Gewässern besitzt den GF-Wert 2. Dagegen besitz die Landteilflächen den GF-Wert 4.
 	- 
 
-
-
-SUPABASE
-Passwort: ZU)CAnRL4u+Aq-a
