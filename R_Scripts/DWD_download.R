@@ -2,11 +2,9 @@
 if (!requireNamespace("rdwd", quietly = TRUE)) install.packages("rdwd")
 library(rdwd)
 library(terra)
-# install.packages("viridis")
 library(viridis)
 
-
-# Basisverzeichnis
+# Basisverzeichnis für Downloads
 base_dir <- "C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/DWDdaten"
 dir.create(base_dir, recursive = TRUE, showWarnings = FALSE)
 
@@ -14,73 +12,59 @@ dir.create(base_dir, recursive = TRUE, showWarnings = FALSE)
 download_raster_data <- function(pattern, years, subdir) {
   data("gridIndex")
   gridbase <- "https://opendata.dwd.de/climate_environment/CDC/grids_germany/"
+  
+  # Finde alle passenden Dateien im DWD-Index
   index_all <- grep(pattern, gridIndex, value = TRUE)
-  print(index_all)  # zeigt dir alle Treffer
   index_years <- grep(paste(years, collapse = "|"), index_all, value = TRUE)
-  print(index_years)  # zeigt dir, was wirklich übrig bleibt
+  
+  message("🔍 ", pattern, ": ", length(index_years), " Dateien gefunden")
+  
+  # Zielverzeichnis erstellen
   target_dir <- file.path(base_dir, subdir)
   dir.create(target_dir, recursive = TRUE, showWarnings = FALSE)
+  
+  # Daten herunterladen
   dataDWD(index_years, base = gridbase, joinbf = TRUE, dir = target_dir)
 }
 
-# Daten herunterladen
-precip <- download_raster_data("monthly/precipitation", 2022:2024, "Niederschlag/Monatlich")
+# Variablen und zugehörige deutsche Hauptordner
+variables <- list(
+  # precipitation = "Niederschlag",
+  # air_temperature_min = "Lufttemperatur_min",
+  air_temperature_max = "Lufttemperatur_max",
+  air_temperature_mean = "Lufttemperatur_mean"
+  # drought_index = "Dürreindex",
+  # sunshine_duration = "Sonnenscheindauer",
+  # hot_days = "Hitzetage"
+)
 
-precip <- download_raster_data("seasonal/precipitation", 2022:2024, "Niederschlag/Saisonal")
+# Deutsche Bezeichnungen für Zeitauflösungen
+resolutions_de <- c(
+  monthly = "Monatlich",
+  seasonal = "Saisonal",
+  annual = "Jaehrlich"
+)
 
-precip <- download_raster_data("annual/precipitation", 2022:2024, "Niederschlag/Jaehrlich")
+# Zeitraum
+years <- 2020:2024
 
-
-# Plot der Niederschlagsdaten mit der 'viridis' Farbpalette
-plot(precip, 
-     main = "Jährliche Niederschlagsmenge in mm (2022)", 
-     col = turbo(100), 
-     zlim = c(min(precip[], na.rm = TRUE), max(precip[], na.rm = TRUE)))
-
-
-
-
-temp_min <- download_raster_data("monthly/air_temperature_min", 2022:2024, "Temperatur/Monatlich")
-
-temp_max <- download_raster_data("monthly/air_temperature_max", 2022:2024, "Temperatur/Monatlich")
-
-temp_mean <- download_raster_data("monthly/air_temperature_mean", 2022:2024, "Temperatur/Monatlich")
-
-
-temp_min <- download_raster_data("seasonal/air_temperature_min", 2022:2024, "Temperatur/Saisonal")
-
-temp_max <- download_raster_data("seasonal/air_temperature_max", 2022:2024, "Temperatur/Saisonal")
-
-temp_mean <- download_raster_data("seasonal/air_temperature_mean", 2022:2024, "Temperatur/Saisonal")
-
-
-temp_min <- download_raster_data("annual/air_temperature_min", 2022:2024, "Temperatur/Jaehrlich")
-
-temp_max <- download_raster_data("annual/air_temperature_max", 2022:2024, "Temperatur/Jaehrlich")
-
-temp_mean <- download_raster_data("annual/air_temperature_mean", 2022:2024, "Temperatur/Jaehrlich")
-
-# Plot der Temperaturdaten mit der 'viridis' Farbpalette
-plot(temp_mean, 
-     main = "Jährliche Durchschnittstemperatur in °C (2022)", 
-     col = turbo(100), 
-     zlim = c(min(temp_mean[], na.rm = TRUE), max(temp_mean[], na.rm = TRUE)))
+# Hauptschleife: Lade alle gewünschten Datensätze herunter
+for (var in names(variables)) {
+  for (res in names(resolutions_de)) {
+    
+    # Sonderfall: hot_days gibt es nur jährlich
+    if (var == "hot_days" && res != "annual") next
+    
+    pattern <- paste0(res, "/", var)
+    subdir <- file.path(variables[[var]], resolutions_de[[res]])
+    
+    message("⬇️ Lade Daten für: ", var, " (", res, ") → ", subdir)
+    download_raster_data(pattern, years, subdir)
+  }
+}
 
 
-
-drought <- download_raster_data("monthly/drought_index", 2022:2024, "Dürreindex/Monatlich")
-
-drought <- download_raster_data("seasonal/drought_index", 2022:2024, "Dürreindex/Saisonal")
-
-drought <- download_raster_data("annual/drought_index", 2022:2024, "Dürreindex/Jaehrlich")
-
-
-# Plot mit der 'Turbo' Farbpalette
-plot(drought, 
-     main = "Jährlicher Dürreindex (2022)", 
-     col = turbo(100), 
-     zlim = c(min(drought[], na.rm = TRUE), max(drought[], na.rm = TRUE)))
-
+#  UHI nc. files herunterladen ------------------------------------------------
 
 # Funktion zum Herunterladen von UHI-Daten
 download_uhi_data <- function(years, months, subdir, var_name, time_res, clc = "1990") {
@@ -120,25 +104,9 @@ download_uhi_data(2022:2024, c("03", "06", "09", "12"), "Tropische_Naechte/Saiso
 
 
 # Tropische Nächte (jährlich)
-download_uhi_data(2022:2024, sprintf("%02d", 1:12), "Tropische_Naechte/Jaehrlich", "tropical-nights_diff", "p1y", clc = "2018")
+download_uhi_data(2020:2024, sprintf("%02d", 1:12), "Tropische_Naechte/Jaehrlich", "tropical-nights_diff", "p1y", clc = "2018")
 
 
 # UHI daymax mean (monatlich)
 download_uhi_data(2022:2024, sprintf("%02d", 1:12), "UHI_daymax_mean", "uhi_daymax-mean", "p1m")
-
-
-library(terra)
-library(viridis)
-
-# Pfad zur Jahresdatei für 2022 (Tropische Nächte, CLC 2018)
-file_2022 <- file.path(base_dir, "UHI", "Tropische_Naechte/Jaehrlich", 
-                       "uhi-map_v7_clc2018_tropical-nights_diff_p1y_2022-01-01.nc")
-
-# Laden als SpatRaster
-tropennacht_2022 <- rast(file_2022)
-plot(tropennacht_2022, 
-     main = "Jährliche Tropennächte (2022)", 
-     col = turbo(100),
-     zlim = c(min(tropennacht_2022[], na.rm = TRUE), 
-              max(tropennacht_2022[], na.rm = TRUE)))
 

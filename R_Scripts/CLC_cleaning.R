@@ -1,6 +1,7 @@
 library(readr)
 library(dplyr)
 library(tidyr)
+library(sf)
 
 # 1. CSV-Dateien laden
 df <- read_csv("C:/Users/agnes/Documents/EAGLE/Innovation_Lab/Daten/COPERNICUS_CORINE_V20_100m/CLC_Anteile_AlleKreise_2018.csv")

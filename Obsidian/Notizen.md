@@ -13,7 +13,11 @@ https://geoservice.dlr.de/web/datasets/n2nnoise
 - - Spatial Resolution: 10 x 10m
 - **Map Projection:** Name: [ETRS89 / LAEA Europe (EPSG:3035)](https://epsg.io/3035)
 ![[Pasted image 20250509135119.png]]
- 
+ - Raster auf jeden Landkreis zugeschnitten
+ - anschließend pixel count berechnet
+ - pixel count in fläche umgerechnet (ein Pixel ist 10x10 m )
+ - Flächenanteil jeder Dezibel Klasse pro Landkreis
+ - 
 ## DWD 
 https://opendata.dwd.de/climate_environment/CDC/grids_germany/
 - __*Monatliche und Saisonal (2022-2024)
