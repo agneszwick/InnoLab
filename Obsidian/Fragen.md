@@ -1,2 +1,0 @@
-- Soll ich bei den tropischen Nächten den Median in jedem Landkreis berechnen oder den Max?
-- 
