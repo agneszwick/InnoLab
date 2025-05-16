@@ -243,3 +243,7 @@ Alle folgenden Werte sind von 2022 (aber ab 1995 verfügbar):
 	- Die Gebiete, in denen unterhalb der Landesebene keine weiteren Ebenen vorhanden sind, erhalten die Angabe „ohne Struktur“. Die Angabe Gewässer bezieht sich auf die Nord- und Ostsee sowie den Bodensee. Verwaltungseinheiten, deren Gebiet sich auch über die Nord- oder Ostsee bzw. den Bodensee erstreckt, sind an der Küste getrennt. Eine Unterscheidung der beiden Teile der betroffenen Verwaltungseinheiten ist über das Attribut GF (Geofaktor) möglich. Die Teilfläche auf den genannten Gewässern besitzt den GF-Wert 2. Dagegen besitz die Landteilflächen den GF-Wert 4.
 	- 
 
+
+## Postleitzahlen
+Postleitzahl mit Kreis code (ARS)
+https://public.opendatasoft.com/explore/dataset/georef-germany-postleitzahl/export/?sort=krs_code
