@@ -1,3 +1,0 @@
-- Wie soll mit Hauptdiagnosen in anderen Fachabteilungen umgegangen werden (z.B. I71 Hauptdiagnose bei Kardiologie)? (Doppelte Auflistung wenn das Haus auch eine gefäßchirurgische Abteilung hat?)
-- Kann es sein, dass eine Prozedur zu Aortenaneurysmen an einem Krankenhaus durchgeführt wird, die keine gefäßchirurgische Fachabteilung besitzt? 
-- Auflistung von relevanten OPS - Codierungen zu z.B. Aortenaneurysmen 

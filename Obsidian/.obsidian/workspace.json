@@ -8,20 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f5cac67422835b4a",
+            "id": "f8388a84d8a47eec",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fachabteilung - Gefäßchirurgie.md",
+                "file": "Umweltdaten/S-VELD Sentinel-5P.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fachabteilung - Gefäßchirurgie"
+              "title": "S-VELD Sentinel-5P"
+            }
+          },
+          {
+            "id": "067a527a260dbf47",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Datenübersicht.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Datenübersicht"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -40,7 +55,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byModifiedTime",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -78,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 345.5
+    "width": 200
   },
   "right": {
     "id": "c24cbacb6e4d5177",
@@ -168,39 +183,56 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f5cac67422835b4a",
+  "active": "067a527a260dbf47",
   "lastOpenFiles": [
-    "Externer.md",
-    "Fachabteilung - Gefäßchirurgie.md",
-    "I71- rupturiert.md",
-    "Untitled",
-    "I71- rupturiert.pdf",
-    "Min_Anzahl_Dissektion_rupturiert_Voronoi.png",
-    "Max_Anzahl_Dissektion_rupturiert_Voronoi.png",
-    "Min_Anzahl_Aneurysma_rupturiert_Voronoi.png",
-    "Max_Anzahl_Aneurysma_rupturiert_Voronoi 2.png",
-    "Voronoi_GC.png",
-    "Max_Anzahl_Aneurysma_rupturiert_Voronoi 1.png",
-    "Max_Anzahl_Aneurysma_rupturiert_Voronoi.png",
-    "Aortenaneurysma.md",
-    "Fragen zu Qualitätsberichte der Krankenhäuser.md",
+    "Umweltdaten/S-VELD Sentinel-5P.md",
+    "Umweltdaten/S-VELD MODIS SLSTR Surface PM2.5 (Monthly Mean).md",
+    "Datenübersicht.md",
+    "S-VELD Sentinel-5P/TROPOMI Tropospheric NO2 columns and surface NO2 concentrations.md",
+    "S-VELD Sentinel-5P",
+    "Umweltdaten/Sentinel-5P.md",
+    "Sentinel-5P OFFL O3.md",
+    "Umweltdaten/Sentinel-5P OFFL O3.md",
+    "Umweltdaten/Sentinel-5P OFFL NO2.md",
+    "Umweltdaten/Sentinel-5P OFFL SO2.md",
+    "Copernicus CORINE Land Cover.md",
+    "S-VELD MODIS/SLSTR Surface PM2.5 (Monthly Mean).md",
+    "S-VELD MODIS",
+    "Verwaltungsgebiete.md",
+    "Umweltdaten/Deutscher Wetterdienst (DWD).md",
+    "Abbildungen/Max_Anzahl_Aneurysma_rupturiert_Voronoi.png",
+    "COPERNICUS/S5P/OFFL/L3_NO2.md",
+    "COPERNICUS/S5P/OFFL",
+    "COPERNICUS/S5P",
+    "COPERNICUS",
+    "Umweltdaten/MOD13A3 NDVI.md",
+    "Umweltdaten/MODIS NDVI.md",
+    "Umweltdaten/Noise2NAKOAI - Roud Traffic Noise, Germany 2017.md",
+    "Fragen",
+    "Fragen/Fragen zu Qualitätsberichte der Krankenhäuser.md",
+    "BB",
     "Fragen zu Qualitätsberichte der Krankenhäuser.pdf",
-    "OPS-Nummerierung.md",
     "Anmerkungen zum Code.md",
-    "Qualitätsbericht der Krankenhäuser.md",
-    "B-[X].5 Fallzahlen der Organisationseinheit/Fachabteilung.md",
-    "B-[X].5 Fallzahlen der Organisationseinheit",
-    "Notizen.md",
-    "Untitl261500611-773668000-2023-xml.xmled.md",
-    "Abteilungen.md",
-    "Pasted image 20250509135119.png",
-    "Untitled 1.md",
-    "Untitled.canvas",
-    "Pasted image 20250513120609.png",
-    "Auswahlliste „Ambulante Behandlungsmöglichkeiten“.md",
-    "Auswahlliste „Medizinische Leistungsangebote“.md",
     "Anmerkungen_zu_Daten.pdf",
-    "B-[X].8 Ambulante Behandlungsmöglichkeiten.md",
+    "Abbildungen/Pasted image 20250509135119.png",
+    "Medizinische Infos/OPS-Nummerierung.md",
+    "Untitl261500611-773668000-2023-xml.xmled.md",
+    "Qualitätsbericht/Qualitätsbericht der Krankenhäuser.md",
+    "Medizinische Infos/Aortenaneurysma.md",
+    "Zwischenergebnisse/I71- rupturiert.pdf",
+    "Zwischenergebnisse/I71- rupturiert.md",
+    "Abbildungen/Min_Anzahl_Dissektion_rupturiert_Voronoi.png",
+    "Abbildungen/Max_Anzahl_Aneurysma_rupturiert_Voronoi 2.png",
+    "Abbildungen/Max_Anzahl_Dissektion_rupturiert_Voronoi.png",
+    "Externer.md",
+    "Workflows/DWD Workflow.canvas",
+    "Umweltdaten/DLR S-VELD NO2 and PM2.5.md",
+    "Abbildungen/Voronoi_GC.png",
+    "Workflows/Workflow von den Qualitätsberichten.canvas",
+    "Workflows/Road Traffic Noise Workflow.canvas",
+    "Abbildungen/Min_Anzahl_Aneurysma_rupturiert_Voronoi.png",
+    "Abbildungen/Max_Anzahl_Aneurysma_rupturiert_Voronoi 1.png",
+    "Pasted image 20250513120609.png",
     "Pasted image 20250509094944.png"
   ]
 }
